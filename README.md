@@ -27,7 +27,60 @@ $ yarn run test:cov
 
 ## Add packages
 ```bash
-$ yarn add @nestjs/graphql graphql-tools graphql apollo-server-express
+$ yarn add @nestjs/graphql graphql-tools graphql apollo-server-express @nestjs/apollo class-validator uuid
+
+```
+
+##Examples
+```
+query {
+    users( userIds: ["3d73ddca-a2a9-4040-8f53-b3ce8bd082b5"] ) {
+        userId,
+        email,
+        age,
+        isSubscribed
+    }
+}
+
+query {
+    user(userId:"{REPLACE UUID}") {
+        userId,
+        email,
+        age,
+        isSubscribed
+    }
+}
+
+
+mutation {
+    createUser(createUserData: { email:"fchinch" , age:34  }){
+        userId,
+        email,
+        age,
+        isSubscribed
+    }
+}
+
+mutation {
+    updateUser(updateUserData: { userId:"7ce72cee-8fbf-4fe3-8de1-f9d94bdda1df" , age:23  }){
+        userId,
+        email,
+        age,
+        isSubscribed
+    }
+}
+
+
+mutation {
+    deleteUser(deleteUserData: { userId:"3d73ddca-a2a9-4040-8f53-b3ce8bd082b5" }){
+        userId,
+        email,
+        age,
+        isSubscribed
+    }
+}
+
+```
 
 ## Support
 
